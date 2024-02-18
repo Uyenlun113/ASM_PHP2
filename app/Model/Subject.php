@@ -26,9 +26,9 @@ class Subject extends Db {
     }
     function updateSubject($id, $code_subject, $subject_name, $description) {
         $sql = "UPDATE subject SET code_subject = '$code_subject', subject_name = '$subject_name', description = '$description' WHERE id = '$id'";
-        echo ($sql);
         $result = $this->getData( $sql );
         return $result;
     }
+    
 }
 ?>

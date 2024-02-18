@@ -21,7 +21,7 @@
           </a>
           <ul class="sub">
             <li><a href="<?php echo route('/add-quiz'); ?>">Thêm bài quiz</a></li>
-            <li><a href="<?php route('/list') ?>">Danh sách quizz</a></li>
+            <li><a href="<?php echo route('/listquiz') ?>">Danh sách quizz</a></li>
           </ul>
         </li>
       </ul>

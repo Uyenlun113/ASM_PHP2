@@ -57,7 +57,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     }}'>
                         <thead>
                           <tr>
-                            <th data-breakpoints="xs">ID</th>
+                            <th data-breakpoints="xs">#</th>
+                            <th>Mã Quizz</th>
                             <th>Tên Quizz</th>
                             <th>Tên môn học</th>
                             <th>Danh sách câu hỏi</th>
@@ -66,19 +67,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </thead>
                         <tbody>
                           <?php foreach ($list as $index=>$item): ?>
-
                           <tr>
                             <td><?php echo $index+1; ?></td>
                             <td><?php echo $item['name_quiz']; ?></td>
+                            <td><?php echo $item['name_quiz']; ?></td>
                             <td><?php echo $item['subject_name']; ?></td>
-                            <td><a href="{{route('listques')}}">Xem chi tiết</a></td>
+                            <td>
+                              <a href="{{ route('listques/'.$item['id']) }}">Xem chi tiết</a>
+                            </td>
                             <td>
                               <!-- Edit button -->
-                              <a href="{{ route('subject/'.$item['id'].'/update') }}"
+                              <a href="{{ route('quiz/'.$item['id'].'/update') }}"
                                 class="btn btn-sm btn-warning">Sửa</a>
 
                               <!-- Delete button -->
-                              <a href="delete/{{$item['id']}}" class="btn btn-sm btn-danger"
+                              <a href="deletequiz/{{$item['id']}}" class="btn btn-sm btn-danger"
                                 onclick="return confirm('Bạn cóa muốn xóa không?')">Xóa</a>
                             </td>
                           </tr>

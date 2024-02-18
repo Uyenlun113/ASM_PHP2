@@ -65,8 +65,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <textarea name="questions_name[]" class="questions_name" rows="4" cols="50"
  required></textarea>
  <br>
- <label for="">Điểm</label>
- <!-- <input type="number" name="point"> -->
+ <label for="point">Điểm:</label> <!-- Thêm nhãn cho trường nhập điểm -->
+ <input type="number" name="point[]">
  <div class="input_fields_answer">
  <button class="add_field_answer">Thêm câu trả lời</button>
  <div>
@@ -81,8 +81,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  </div>
  </div>
 
- <a href="#" class="remove_field_question btn btn-danger">Xóa câu hỏi</a>
- <button class="add_field_question btn btn-success">Thêm câu hỏi</button>
+
  </div>
 
 
@@ -108,6 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <div class="question_container" style="margin: 0 0 50px 200px ;">
  <label for="questions_name">Câu hỏi:</label>
  <textarea name="questions_name[]" class="questions_name" rows="4" cols="50" required></textarea><br><label for="">Điểm</label>
+ <input type="number" name="point[]" >
  <br>
  <div class="input_fields_answer">
  <button class="add_field_answer">Thêm câu trả lời</button>

@@ -3,6 +3,10 @@ use Phroute\Phroute\RouteCollector;
 
 use App\Controller\Admin\SubjectController;
 use App\Controller\Admin\QuizController;
+use App\Controller\Home\InputQuizzController;
+use App\Controller\Home\QuizzAnswerController;
+
+
 $url = isset($_GET['url']) ? $_GET['url'] : 'list';
 $router = new RouteCollector();
 
@@ -21,6 +25,11 @@ $router->get('/listquiz', [QuizController::class,'listQuiz']);
 $router->get('/listques/{id}', [QuizController::class,'listQuestion']);
 $router->get('/quiz/{id}/update', [QuizController::class, 'viewQuiz']);
 $router->post('/quiz/{id}/update', [QuizController::class, 'viewUpdate']);
+
+//home
+$router->get('/InputQuizz', [InputQuizzController::class, 'InputQuizz']);
+$router->get('/QuizzAnswer/{id}', [QuizzAnswerController::class, 'QuizzAnswer']);
+
 
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());

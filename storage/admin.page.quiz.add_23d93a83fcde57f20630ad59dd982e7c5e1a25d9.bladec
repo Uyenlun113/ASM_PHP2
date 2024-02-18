@@ -71,13 +71,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <button class="add_field_answer">Thêm câu trả lời</button>
  <div>
  <label for="answer_checkbox">Dap an 1</label>
- <input type="checkbox" name="iscorrect[1][]" />
- <input type="text" name="option[1][]" />
+ <input type="checkbox" name="iscorrect[0][]" />
+ <input type="text" name="option[0][]" />
  </div>
  <div>
  <label for="answer_checkbox">Dap an 2</label>
- <input type="checkbox" name="iscorrect[1][]" />
- <input type="text" name="option[1][]" />
+ <input type="checkbox" name="iscorrect[0][]" />
+ <input type="text" name="option[0][]" />
  </div>
  </div>
 
@@ -98,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  var wrapper_question = $(".input_fields_question"); // Fields wrapper for questions
  var add_button_question = $(".add_field_question"); // Add button ID for questions
 
- var x = 1; // initial text box count for questions
+ var x = 0; // initial text box count for questions
  $(add_button_question).click(function(e) { // on add input button click for questions
  e.preventDefault();
  if (x < max_fields) {

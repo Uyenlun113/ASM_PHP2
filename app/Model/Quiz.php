@@ -45,17 +45,20 @@ class Quiz extends Db
         return $result;
     }
 
-    public function getQuizID($id)
- {
-        $sql = "SELECT qz.*, q.id as question_id, q.questions_name, q.point, a.id as answer_id, a.option, a.iscorrect
-          FROM quiz qz
-          JOIN questions q ON qz.id = q.id_quiz
-          LEFT JOIN answer a ON q.id = a.id_question
-          WHERE qz.id = '$id'
-          ";
-        $result = $this->getData( $sql );
-        return $result;
-    }
+public function getQuizID($id)
+{
+    // Sử dụng câu truy vấn để lấy dữ liệu
+    $sql = "SELECT qz.*, q.id as question_id, q.questions_name, q.point, a.id as answer_id, a.option, a.iscorrect
+            FROM quiz qz
+            JOIN questions q ON qz.id = q.id_quiz
+            LEFT JOIN answer a ON q.id = a.id_question
+            WHERE qz.id = '$id'";
+    // Thực hiện truy vấn
+    $result = $this->getData($sql);
+    // Trả về kết quả
+    return $result;
+}
+
 
     public function updateQuiz( $id_quiz, $name_quiz, $id_subject )
  {

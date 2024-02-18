@@ -21,59 +21,59 @@ class QuizController extends BaseController
         return $this->render('admin.page.quiz.add', compact('listSubject'));
     }
     public function saveQuiz()
-    {
-        if (isset($_POST["add_quiz"])) {
-            $name_quiz = $_POST['name_quiz'];
-            $id_subject = $_POST['id_subject'];
-
-            // Insert quiz <information></information>
+{
+    if (isset($_POST["add_quiz"])) {
+        $name_quiz = $_POST['name_quiz'];
+        $id_subject = $_POST['id_subject'];
+      
+             // Insert quiz <information></information>
             $quizId = $this->quizModel->insertQuiz($name_quiz, $id_subject);
 
-            // Array to store quiz information
-            $quizData = array(
-                'name_quiz' => $name_quiz,
-                'id_subject' => $id_subject,
-                'questions' => array(),
-            );
+        // Array to store quiz information
+        $quizData = array(
+            'name_quiz' => $name_quiz,
+            'id_subject' => $id_subject,
+            'questions' => array(),
+        );
 
-            $numQuestions = count($_POST['questions_name']);
-            for ($index = 0; $index < $numQuestions; $index++) {
-                $question = isset($_POST['questions_name'][$index]) ? $_POST['questions_name'][$index] : null;
-                $point = isset($_POST['point'][$index]) ? $_POST['point'][$index] : null;
+        $numQuestions = count($_POST['questions_name']);
+        for ($index = 0; $index < $numQuestions; $index++) {
+            $question = isset($_POST['questions_name'][$index]) ? $_POST['questions_name'][$index] : null;
+            $point = isset($_POST['point'][$index]) ? $_POST['point'][$index] : null;
 
                 // Insert question information
                 $questionId = $this->quizModel->insertQuestion($quizId, $question, $point);
 
-                $questionData = array(
-                    'question' => $question,
-                    'point' => $point,
-                    'options' => array(),
-                );
+            $questionData = array(
+                'question' => $question,
+                'point' => $point,
+                'options' => array(),
+            );
 
-                $options = isset($_POST['option'][$index]) && is_array($_POST['option'][$index]) ? $_POST['option'][$index] : array();
+            $options = isset($_POST['option'][$index]) && is_array($_POST['option'][$index]) ? $_POST['option'][$index] : array();
 
-                $numOptions = count($options);
-                for ($optionIndex = 0; $optionIndex < $numOptions; $optionIndex++) {
-                    $optionText = isset($options[$optionIndex]) ? $options[$optionIndex] : null;
-                    $isChecked = isset($_POST['iscorrect'][$index][$optionIndex]);
+            $numOptions = count($options);
+            for ($optionIndex = 0; $optionIndex < $numOptions; $optionIndex++) {
+                $optionText = isset($options[$optionIndex]) ? $options[$optionIndex] : null;
+                $isChecked = isset($_POST['iscorrect'][$index][$optionIndex]);
 
                     // Insert option information
                     $this->quizModel->insertOption($questionId, $optionText, $isChecked);
 
-                    $optionData = array(
-                        'option' => $optionText,
-                        'iscorrect' => $isChecked,
-                    );
+                $optionData = array(
+                    'option' => $optionText,
+                    'iscorrect' => $isChecked,
+                );
 
-                    $questionData['options'][] = $optionData;
-                }
-
-                $quizData['questions'][] = $questionData;
+                $questionData['options'][] = $optionData;
             }
 
-            header("Location:" . route('/listquiz'));
+            $quizData['questions'][] = $questionData;
         }
+
+        header("Location:" . route('/listquiz'));
     }
+}
     public function listQuiz()
     {
         $list = $this->quizModel->getQuizz();
